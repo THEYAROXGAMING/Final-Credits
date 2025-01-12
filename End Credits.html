@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game End Credits</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="credits-container">
+        <div class="credits">
+            <h1>Game Credits</h1>
+            <div class="credit-line">Developer: TYG</div>
+            <div class="credit-line">Artist: Pintrest</div>
+            <div class="credit-line">Sound Designer:None</div>
+            <div class="credit-line">Lead Tester: TYG</div>
+            <div class="credit-line">Narrative Designer: TYG</div>
+            <div class="credit-line">Music Composer: None</div>
+            <div class="credit-line">Special Thanks: All Game Fans</div>
+            <div class="credit-line">Game Engine: CodePen</div>
+            <div class="credit-line">Publisher: TYG Studios</div>
+            <div class="credit-line">Copyright © 2025 TYG Studios</div>
+            <div class="credit-line">End of Credits</div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+<style>/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Style the body */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #000;
+    color: #fff;
+    text-align: center;
+    overflow: hidden;
+}
+
+/* Container for credits */
+.credits-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* Credits animation */
+.credits {
+    text-align: center;
+    animation: scrollCredits 20s linear infinite;
+}
+
+@keyframes scrollCredits {
+    0% {
+        transform: translateY(100%);
+    }
+    100% {
+        transform: translateY(-100%);
+    }
+}
+
+/* Style for each credit line */
+.credit-line {
+    font-size: 24px;
+    margin: 15px 0;
+}
+
+h1 {
+    font-size: 48px;
+    margin-bottom: 30px;
+}
+
+/* Optional: Fade-out effect at the end */
+.credits-container {
+    animation: fadeOut 25s forwards;
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+</style><script>document.addEventListener("DOMContentLoaded", function() {
+    const credits = document.querySelector('.credits');
+    const container = document.querySelector('.credits-container');
+
+    // Restart credits after the animation ends
+    credits.addEventListener('animationiteration', () => {
+        setTimeout(() => {
+            container.style.opacity = '1';  // Make sure the container is visible
+            credits.style.animation = 'none';  // Reset animation
+            credits.offsetHeight;  // Trigger reflow to reset the animation
+            credits.style.animation = 'scrollCredits 20s linear infinite';  // Restart the animation
+        }, 1000);
+    });
+});
+</script>
